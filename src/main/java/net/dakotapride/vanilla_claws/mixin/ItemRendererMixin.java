@@ -34,7 +34,7 @@ public class ItemRendererMixin {
             pPoseStack.pushPose();
             boolean flag = pTransformType == ItemTransforms.TransformType.GUI || pTransformType == ItemTransforms.TransformType.GROUND || pTransformType == ItemTransforms.TransformType.FIXED;
             if (flag) {
-                if (pItemStack.is(ItemsInit.NETHERITE_CLAWS)) {
+                if (pItemStack.is(ItemsInit.NETHERITE_CLAWS.get())) {
                     pModel = this.itemModelShaper.getModelManager().getModel(new ModelResourceLocation("vanilla_claws:netherite_claws#inventory"));
                 }
             }
@@ -45,8 +45,8 @@ public class ItemRendererMixin {
     @Inject(method = "getModel", at = @At("TAIL"))
     private void getModel(ItemStack pItemStack, Level pLevel, LivingEntity p_174267_, int p_174268_, CallbackInfoReturnable<BakedModel> cir) {
         BakedModel bakedmodel;
-        if (pItemStack.is(ItemsInit.NETHERITE_CLAWS)) {
-            bakedmodel = this.itemModelShaper.getModelManager().getModel(new ModelResourceLocation("vanilla_claws:netherite_claws_in_hand#inventory"));
+        if (pItemStack.is(ItemsInit.NETHERITE_CLAWS.get())) {
+            bakedmodel = this.itemModelShaper.getModelManager().getModel(new ModelResourceLocation("vanilla_claws:netherite_claws#inventory"));
         }
     }
 

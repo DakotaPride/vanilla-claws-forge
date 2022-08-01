@@ -1,6 +1,8 @@
 package net.dakotapride.vanilla_claws.item;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -12,15 +14,15 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.eventbus.api.Event;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
+import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -28,6 +30,21 @@ import static net.minecraft.world.item.HoeItem.changeIntoState;
 
 public class ClawsItem extends SwordItem {
     private final float attackDamage;
+
+    protected static final Map<Block, Pair<Predicate<UseOnContext>, Consumer<UseOnContext>>> TILLABLES =
+            Maps.newHashMap(ImmutableMap.of(Blocks.GRASS_BLOCK, Pair.of(HoeItem::onlyIfAirAbove,
+                    changeIntoState(Blocks.FARMLAND.defaultBlockState())), Blocks.DIRT_PATH, Pair.of(HoeItem::onlyIfAirAbove,
+                    changeIntoState(Blocks.FARMLAND.defaultBlockState())), Blocks.DIRT, Pair.of(HoeItem::onlyIfAirAbove,
+                    changeIntoState(Blocks.FARMLAND.defaultBlockState())), Blocks.COARSE_DIRT, Pair.of(HoeItem::onlyIfAirAbove,
+                    changeIntoState(Blocks.DIRT.defaultBlockState())), Blocks.ROOTED_DIRT, Pair.of((p_150861_)
+                    -> true, changeIntoStateAndDropItem(Blocks.DIRT.defaultBlockState(), Items.HANGING_ROOTS))));
+
+    public static Consumer<UseOnContext> changeIntoStateAndDropItem(BlockState pState, ItemLike pItemToDrop) {
+        return (p_150855_) -> {
+            p_150855_.getLevel().setBlock(p_150855_.getClickedPos(), pState, 11);
+            Block.popResourceFromFace(p_150855_.getLevel(), p_150855_.getClickedPos(), p_150855_.getClickedFace(), new ItemStack(pItemToDrop));
+        };
+    }
 
     public ClawsItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
@@ -49,64 +66,33 @@ public class ClawsItem extends SwordItem {
     }
 
     @Override
-    public @NotNull InteractionResult useOn(@NotNull UseOnContext pContext) {
-        int hook = onHoeUse(pContext);
-        if (hook != 0) return hook > 0 ? InteractionResult.SUCCESS : InteractionResult.FAIL;
+    public @NotNull InteractionResult useOn(UseOnContext pContext) {
         Level level = pContext.getLevel();
-        BlockPos blockpos = pContext.getClickedPos();
-        BlockState toolModifiedState = level.getBlockState(blockpos).getToolModifiedState(pContext, net.minecraftforge.common.ToolActions.HOE_TILL, false);
-        Pair<Predicate<UseOnContext>, Consumer<UseOnContext>> pair = toolModifiedState == null ? null : Pair.of(ctx -> true, changeIntoState(toolModifiedState));
+        BlockPos blockPos = pContext.getClickedPos();
+
+        Pair<Predicate<UseOnContext>, Consumer<UseOnContext>> pair = TILLABLES.get(level.getBlockState(blockPos).getBlock());
+
         if (pair == null) {
             return InteractionResult.PASS;
-        } else {
-            Predicate<UseOnContext> predicate = pair.getFirst();
-            Consumer<UseOnContext> consumer = pair.getSecond();
-            if (predicate.test(pContext)) {
-                Player player = pContext.getPlayer();
-                level.playSound(player, blockpos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                if (!level.isClientSide) {
-                    consumer.accept(pContext);
-                    if (player != null) {
-                        pContext.getItemInHand().hurtAndBreak(1, player, (p_150845_) -> {
-                            p_150845_.broadcastBreakEvent(pContext.getHand());
-                        });
-                    }
+        }
+
+        Predicate<UseOnContext> predicate = pair.getFirst();
+        Consumer<UseOnContext> consumer = pair.getSecond();
+
+        if (predicate.test(pContext)) {
+            Player player = pContext.getPlayer();
+            level.playSound(player, blockPos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+
+            if (!level.isClientSide) {
+                consumer.accept(pContext);
+                if (player != null) {
+                    pContext.getItemInHand().hurtAndBreak(1, player, p -> p.broadcastBreakEvent(pContext.getHand()));
                 }
-
-                return InteractionResult.sidedSuccess(level.isClientSide);
-            } else {
-                return InteractionResult.PASS;
             }
-        }
-    }
-
-    public static int onHoeUse(UseOnContext context)
-    {
-        UseHoeEvent event = new UseHoeEvent(context);
-        if (MinecraftForge.EVENT_BUS.post(event)) return -1;
-        if (event.getResult() == Event.Result.ALLOW)
-        {
-            context.getItemInHand().hurtAndBreak(1, context.getPlayer(), player -> player.broadcastBreakEvent(context.getHand()));
-            return 1;
-        }
-        return 0;
-    }
-
-    private static class UseHoeEvent extends PlayerEvent
-    {
-        private final UseOnContext context;;
-
-        public UseHoeEvent(UseOnContext context)
-        {
-            super(context.getPlayer());
-            this.context = context;
+            return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        @Nonnull
-        public UseOnContext getContext()
-        {
-            return context;
-        }
+        return InteractionResult.PASS;
     }
 
     public float getAttackDamage() {
