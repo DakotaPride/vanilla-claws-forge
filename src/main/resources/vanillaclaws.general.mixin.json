@@ -8,7 +8,7 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "refmap": "fancymenu.general.mixin-refmap.json",
+  "refmap": "vanillaclaws.general.mixin-refmap.json",
   "plugin": "net.dakotapride.vanilla_claws.mixin.VCMixinPlugin",
   "minVersion": "0.8"
 }
