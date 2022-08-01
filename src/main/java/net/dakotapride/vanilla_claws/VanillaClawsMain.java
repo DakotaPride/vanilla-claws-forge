@@ -1,7 +1,9 @@
 package net.dakotapride.vanilla_claws;
 
 import com.mojang.logging.LogUtils;
+import net.dakotapride.vanilla_claws.client.ModelBakeryInit;
 import net.dakotapride.vanilla_claws.registry.ItemsInit;
+import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
