@@ -3,11 +3,13 @@ package net.dakotapride.vanilla_claws.item;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Multimap;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -29,7 +31,17 @@ import java.util.function.Predicate;
 import static net.minecraft.world.item.HoeItem.changeIntoState;
 
 public class ClawsItem extends SwordItem {
-    private final float attackDamage;
+    private final Multimap<Attribute, AttributeModifier> attributeModifiers;
+
+    public ClawsItem(Tier pTier, int damage, float speed, Properties pProperties) {
+        super(pTier, damage, speed, pProperties);
+        float attackDamage = damage + pTier.getAttackDamageBonus();
+
+        ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
+        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", attackDamage, AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", speed, AttributeModifier.Operation.ADDITION));
+        this.attributeModifiers = builder.build();
+    }
 
     protected static final Map<Block, Pair<Predicate<UseOnContext>, Consumer<UseOnContext>>> TILLABLES =
             Maps.newHashMap(ImmutableMap.of(Blocks.GRASS_BLOCK, Pair.of(HoeItem::onlyIfAirAbove,
@@ -44,19 +56,6 @@ public class ClawsItem extends SwordItem {
             p_150855_.getLevel().setBlock(p_150855_.getClickedPos(), pState, 11);
             Block.popResourceFromFace(p_150855_.getLevel(), p_150855_.getClickedPos(), p_150855_.getClickedFace(), new ItemStack(pItemToDrop));
         };
-    }
-
-    public ClawsItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
-        super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
-
-        this.attackDamage = pAttackDamageModifier + pTier.getAttackDamageBonus();
-
-        ImmutableMultimap.Builder<net.minecraft.world.entity.ai.attributes.Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", this.attackDamage, AttributeModifier.Operation.ADDITION));
-        builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", pAttackSpeedModifier, AttributeModifier.Operation.ADDITION));
-  //      builder.put(Attributes.ATTACK_RANGE, new AttributeModifier("Weapon modifier", -0.75, AttributeModifier.Operation.ADDITION));
-        ImmutableMultimap<Attribute, AttributeModifier> attributeModifiers = builder.build();
-
     }
 
     @Override
@@ -95,13 +94,9 @@ public class ClawsItem extends SwordItem {
         return InteractionResult.PASS;
     }
 
-    public float getAttackDamage() {
-        return this.attackDamage;
+    @Override
+    public @NotNull Multimap<net.minecraft.world.entity.ai.attributes.Attribute, AttributeModifier> getDefaultAttributeModifiers(@NotNull EquipmentSlot pEquipmentSlot) {
+        return pEquipmentSlot == EquipmentSlot.MAINHAND ? this.attributeModifiers : super.getDefaultAttributeModifiers(pEquipmentSlot);
     }
-
-    //@Override
-    //public @NotNull Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(@NotNull EquipmentSlot pEquipmentSlot) {
-    //    return pEquipmentSlot == EquipmentSlot.MAINHAND ? this.attributeModifiers : super.getAttributeModifiers(pEquipmentSlot);
-    //}
 
 }
