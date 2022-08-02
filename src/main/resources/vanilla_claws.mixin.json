@@ -6,15 +6,13 @@
 
   ],
   "client": [
-
+    "ShieldItemMixin"
   ],
   "mixins": [
-    "LivingEntityMixin"
+
   ],
   "injectors": {
     "defaultRequire": 1
   },
-  "refmap": "vanillaclaws.general.mixin-refmap.json",
-  "plugin": "net.dakotapride.vanilla_claws.mixin.VCMixinPlugin",
-  "minVersion": "0.8"
+  "refmap": "vanilla_claws.mixin-refmap.json"
 }
