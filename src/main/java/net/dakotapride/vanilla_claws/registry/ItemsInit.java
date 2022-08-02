@@ -38,6 +38,13 @@ public class ItemsInit {
             () -> new ClawsItem(VanillaClawsMaterials.WOOD, 3, 2, new Item.Properties()
                     .tab(CreativeModeTab.TAB_COMBAT)));
 
+    public static final RegistryObject<ClawsItem> AMETHYST_CLAWS = ITEMS.register("amethyst_claws",
+            () -> new ClawsItem(VanillaClawsMaterials.AMETHYST, 5, 2, new Item.Properties()
+                    .tab(CreativeModeTab.TAB_COMBAT)));
+    public static final RegistryObject<ClawsItem> QUARTZ_CLAWS = ITEMS.register("quartz_claws",
+            () -> new ClawsItem(VanillaClawsMaterials.QUARTZ, 4, 2, new Item.Properties()
+                    .tab(CreativeModeTab.TAB_COMBAT)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

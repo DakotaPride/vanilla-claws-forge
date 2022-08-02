@@ -20,6 +20,12 @@ public enum VanillaClawsMaterials implements Tier {
     COPPER(0, 231, 2.0F, 0.0F, 1, () -> {
         return Ingredient.of(Items.COPPER_INGOT);
     }),
+    AMETHYST(0, 273, 5.0F, 1.0F, 5, () -> {
+        return Ingredient.of(Items.AMETHYST_SHARD);
+    }),
+    QUARTZ(0, 267, 7.0F, 0.5F, 3, () -> {
+        return Ingredient.of(Items.QUARTZ);
+    }),
     IRON(0, 320, 6.0F, 0.0F, 1, () -> {
         return Ingredient.of(Items.IRON_INGOT);
     }),
