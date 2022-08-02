@@ -18,7 +18,9 @@ public abstract class ShieldItemMixin {
 
     @Inject(method = "use", at = @At("HEAD"), cancellable = true)
     void use(Level pLevel, Player pPlayer, InteractionHand pHand, CallbackInfoReturnable<InteractionResultHolder<ItemStack>> cir) {
-        if(pPlayer.getItemInHand(InteractionHand.MAIN_HAND).is(TagsInit.CLAWS)) {
+        if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).is(TagsInit.CLAWS)) {
+            cir.setReturnValue(InteractionResultHolder.fail(pPlayer.getItemInHand(pHand)));
+        } else if (pPlayer.getItemInHand(InteractionHand.OFF_HAND).is(TagsInit.CLAWS)) {
             cir.setReturnValue(InteractionResultHolder.fail(pPlayer.getItemInHand(pHand)));
         }
     }
