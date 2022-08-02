@@ -2,16 +2,19 @@
   "required": true,
   "package": "net.dakotapride.vanilla_claws.mixin",
   "compatibilityLevel": "JAVA_17",
+  "server": [
+
+  ],
+  "client": [
+
+  ],
   "mixins": [
-    "ShieldItemMixin"
+    "LivingEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "refmap": "vanillaclaws.general.mixin-refmap.json",
   "plugin": "net.dakotapride.vanilla_claws.mixin.VCMixinPlugin",
-  "minVersion": "0.8",
-  "client": [
-    "ItemRendererMixin"
-  ]
+  "minVersion": "0.8"
 }
