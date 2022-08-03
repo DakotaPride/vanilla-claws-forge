@@ -1,6 +1,5 @@
 package net.dakotapride.vanilla_claws.mixin;
 
-import net.dakotapride.vanilla_claws.item.ClawsItem;
 import net.dakotapride.vanilla_claws.tags.TagsInit;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -17,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class ShieldItemMixin {
 
     @Inject(method = "use", at = @At("HEAD"), cancellable = true)
-    void use(Level pLevel, Player pPlayer, InteractionHand pHand, CallbackInfoReturnable<InteractionResultHolder<ItemStack>> cir) {
+    private void use(Level pLevel, Player pPlayer, InteractionHand pHand, CallbackInfoReturnable<InteractionResultHolder<ItemStack>> cir) {
         if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).is(TagsInit.CLAWS)) {
             cir.setReturnValue(InteractionResultHolder.fail(pPlayer.getItemInHand(pHand)));
         } else if (pPlayer.getItemInHand(InteractionHand.OFF_HAND).is(TagsInit.CLAWS)) {
