@@ -1,18 +1,13 @@
 {
   "required": true,
   "package": "net.dakotapride.vanilla_claws.mixin",
+  "minVersion": "0.8",
   "compatibilityLevel": "JAVA_17",
-  "server": [
-
-  ],
-  "client": [
-    "ShieldItemMixin"
-  ],
   "mixins": [
-
+    "ShieldItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
-  "refmap": "vanilla_claws.mixin-refmap.json"
+  "refmap": "mixins.vanilla_claws.refmap.json"
 }
