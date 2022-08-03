@@ -9,5 +9,5 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "refmap": "mixins.vanilla_claws.refmap.json"
+  "refmap": "vanilla_claws.mixin-refmap.json"
 }
