@@ -10,6 +10,7 @@ public class TagsInit {
     public static final TagKey<Item> CAN_DISABLE_SHIELDS = forgeTag("shield/can_disable_shields");
     public static final TagKey<Item> CLAWS = forgeTag("weapons/claws");
     public static final TagKey<Item> AXES = forgeTag("weapons/axes");
+    public static final TagKey<Item> SHIELDS = forgeTag("shield/shields");
 
     private static TagKey<Item> forgeTag(String name) {
         return ItemTags.create(new ResourceLocation("forge", name));
