@@ -1,7 +1,10 @@
 package net.dakotapride.vanilla_claws.registry;
 
+import net.dakotapride.vanilla_claws.integration.IntegratedMaterials;
 import net.dakotapride.vanilla_claws.item.ClawsItem;
-import net.dakotapride.vanilla_claws.material.VanillaClawsMaterials;
+import net.dakotapride.vanilla_claws.item.EndGobberClawsItem;
+import net.dakotapride.vanilla_claws.item.GobberClawsItem;
+import net.dakotapride.vanilla_claws.item.material.VanillaClawsMaterials;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -37,6 +40,16 @@ public class ItemsInit {
     public static final RegistryObject<ClawsItem> WOODEN_CLAWS = ITEMS.register("wooden_claws",
             () -> new ClawsItem(VanillaClawsMaterials.WOOD, 3, 2, new Item.Properties()
                     .tab(CreativeModeTab.TAB_COMBAT)));
+
+    public static final RegistryObject<GobberClawsItem> GOBBER2_CLAWS = ITEMS.register("gobber2_claws",
+            () -> new GobberClawsItem(IntegratedMaterials.GOBBER2, 4, 2, new Item.Properties()
+                    .tab(CreativeModeTab.TAB_COMBAT)));
+    public static final RegistryObject<GobberClawsItem> GOBBER2_NETHER_CLAWS = ITEMS.register("gobber2_nether_claws",
+            () -> new GobberClawsItem(IntegratedMaterials.GOBBER2_NETHER, 5, 2, new Item.Properties()
+                    .tab(CreativeModeTab.TAB_COMBAT)));
+    public static final RegistryObject<EndGobberClawsItem> GOBBER2_END_CLAWS = ITEMS.register("gobber2_end_claws",
+            () -> new EndGobberClawsItem(IntegratedMaterials.GOBBER2_END, 5, 2, new Item.Properties()
+                    .tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

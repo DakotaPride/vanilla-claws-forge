@@ -5,5 +5,11 @@
   "item.vanilla_claws.gold_claws": "Golden Claws",
   "item.vanilla_claws.copper_claws": "Copper Claws",
   "item.vanilla_claws.stone_claws": "Stone Claws",
-  "item.vanilla_claws.wooden_claws": "Wooden Claws"
+  "item.vanilla_claws.wooden_claws": "Wooden Claws",
+
+  "item.vanilla_claws.gobber2_claws": "Gobber Claws",
+  "item.vanilla_claws.gobber2_nether_claws": "Nether Gobber Claws",
+  "item.vanilla_claws.gobber2_end_claws": "End Gobber Claws",
+
+  "tooltip.vanilla_claws.requires_mod": "This item requires mod % to be installed."
 }

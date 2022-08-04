@@ -7,6 +7,10 @@
     "vanilla_claws:gold_claws",
     "vanilla_claws:copper_claws",
     "vanilla_claws:diamond_claws",
-    "vanilla_claws:netherite_claws"
+    "vanilla_claws:netherite_claws",
+
+    "vanilla_claws:gobber2_claws",
+    "vanilla_claws:gobber2_nether_claws",
+    "vanilla_claws:gobber2_end_claws"
   ]
 }

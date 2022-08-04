@@ -5,5 +5,11 @@
   "item.vanilla_claws.gold_claws": "Золотые когти",
   "item.vanilla_claws.copper_claws": "Медные когти",
   "item.vanilla_claws.stone_claws": "Каменные когти",
-  "item.vanilla_claws.wooden_claws": "Деревянные когти"
+  "item.vanilla_claws.wooden_claws": "Деревянные когти",
+
+  "item.vanilla_claws.gobber2_claws": "Плеваные когти",
+  "item.vanilla_claws.gobber2_nether_claws": "Когти пожирателя Пустоты",
+  "item.vanilla_claws.gobber2_end_claws": "Конец когтей плевака",
+
+  "tooltip.vanilla_claws.requires_mod": "Этому предмету требуется мод %."
 }

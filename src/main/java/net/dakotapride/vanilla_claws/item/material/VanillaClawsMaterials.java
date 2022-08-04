@@ -1,4 +1,4 @@
-package net.dakotapride.vanilla_claws.material;
+package net.dakotapride.vanilla_claws.item.material;
 
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.LazyLoadedValue;

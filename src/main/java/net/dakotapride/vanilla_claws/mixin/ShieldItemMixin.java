@@ -1,6 +1,8 @@
 package net.dakotapride.vanilla_claws.mixin;
 
-import net.dakotapride.vanilla_claws.tags.TagsInit;
+import net.dakotapride.vanilla_claws.item.ClawsItem;
+import net.dakotapride.vanilla_claws.item.EndGobberClawsItem;
+import net.dakotapride.vanilla_claws.item.GobberClawsItem;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -17,9 +19,20 @@ public abstract class ShieldItemMixin {
 
     @Inject(method = "use", at = @At("HEAD"), cancellable = true)
     private void use(Level pLevel, Player pPlayer, InteractionHand pHand, CallbackInfoReturnable<InteractionResultHolder<ItemStack>> cir) {
-        if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).is(TagsInit.CLAWS)) {
+        if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof ClawsItem) {
             cir.setReturnValue(InteractionResultHolder.fail(pPlayer.getItemInHand(pHand)));
-        } else if (pPlayer.getItemInHand(InteractionHand.OFF_HAND).is(TagsInit.CLAWS)) {
+        } else if (pPlayer.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof ClawsItem) {
+            cir.setReturnValue(InteractionResultHolder.fail(pPlayer.getItemInHand(pHand)));
+        }
+
+        if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof GobberClawsItem) {
+            cir.setReturnValue(InteractionResultHolder.fail(pPlayer.getItemInHand(pHand)));
+        } else if (pPlayer.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof GobberClawsItem) {
+            cir.setReturnValue(InteractionResultHolder.fail(pPlayer.getItemInHand(pHand)));
+        }
+        if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof EndGobberClawsItem) {
+            cir.setReturnValue(InteractionResultHolder.fail(pPlayer.getItemInHand(pHand)));
+        } else if (pPlayer.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof EndGobberClawsItem) {
             cir.setReturnValue(InteractionResultHolder.fail(pPlayer.getItemInHand(pHand)));
         }
     }
