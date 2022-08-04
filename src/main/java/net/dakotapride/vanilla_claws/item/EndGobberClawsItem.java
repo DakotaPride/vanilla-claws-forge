@@ -1,9 +1,13 @@
 package net.dakotapride.vanilla_claws.item;
 
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 public class EndGobberClawsItem extends GobberClawsItem {
     public EndGobberClawsItem(String requiredMod, Tier pTier, int damage, float attackSpeed, Properties pProperties) {
@@ -15,8 +19,18 @@ public class EndGobberClawsItem extends GobberClawsItem {
     }
 
     @Override
-    public void onCraftedBy(ItemStack pStack, Level pLevel, Player pPlayer) {
-        if(pLevel.isClientSide) return;
-        pStack.serializeNBT().putInt("Unbreakable", 1);
+    public boolean hurtEnemy(ItemStack pStack, @NotNull LivingEntity pLivingEntity, @NotNull LivingEntity pTarget) {
+        pStack.setDamageValue(0);
+        return true;
+    }
+
+    @Override
+    public boolean mineBlock(@NotNull ItemStack pStack, @NotNull Level pLevel, BlockState pBlockState, @NotNull BlockPos pBlockPos, @NotNull LivingEntity pLivingEntity) {
+        Block pBlock = pBlockState.getBlock();
+        if ((double)pBlock.defaultDestroyTime() != 0.0D) {
+            pStack.setDamageValue(0);
+        }
+
+        return true;
     }
 }
