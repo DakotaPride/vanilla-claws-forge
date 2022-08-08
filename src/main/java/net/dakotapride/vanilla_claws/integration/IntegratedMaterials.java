@@ -2,7 +2,6 @@ package net.dakotapride.vanilla_claws.integration;
 
 import net.dakotapride.vanilla_claws.tags.TagsInit;
 import net.minecraft.util.LazyLoadedValue;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.eventbus.api.IEventBus;
