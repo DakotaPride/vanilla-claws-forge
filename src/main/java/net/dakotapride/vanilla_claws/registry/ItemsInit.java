@@ -4,6 +4,7 @@ import net.dakotapride.vanilla_claws.integration.IntegratedMaterials;
 import net.dakotapride.vanilla_claws.item.ClawsItem;
 import net.dakotapride.vanilla_claws.item.EndGobberClawsItem;
 import net.dakotapride.vanilla_claws.item.GobberClawsItem;
+import net.dakotapride.vanilla_claws.item.ResourceSlimesIntegratedClawsItem;
 import net.dakotapride.vanilla_claws.item.material.VanillaClawsMaterials;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -50,6 +51,25 @@ public class ItemsInit {
     public static final RegistryObject<EndGobberClawsItem> GOBBER2_END_CLAWS = ITEMS.register("gobber2_end_claws",
             () -> new EndGobberClawsItem(IntegratedMaterials.GOBBER2_END, 5, 2, new Item.Properties()
                     .tab(CreativeModeTab.TAB_COMBAT).fireResistant()));
+
+    public static final RegistryObject<ResourceSlimesIntegratedClawsItem> SOAPY_CLAWS = ITEMS.register("soapy_claws",
+            () -> new ResourceSlimesIntegratedClawsItem(IntegratedMaterials.SOAPY, 3, 4, new Item.Properties()
+                    .tab(CreativeModeTab.TAB_COMBAT)));
+    public static final RegistryObject<ResourceSlimesIntegratedClawsItem> BLACK_OPAL_CLAWS = ITEMS.register("black_opal_claws",
+            () -> new ResourceSlimesIntegratedClawsItem(IntegratedMaterials.BLACK_OPAL, 3, 4, new Item.Properties()
+                    .tab(CreativeModeTab.TAB_COMBAT)));
+    public static final RegistryObject<ResourceSlimesIntegratedClawsItem> CITRINE_CLAWS = ITEMS.register("citrine_claws",
+            () -> new ResourceSlimesIntegratedClawsItem(IntegratedMaterials.CITRINE, 3, 4, new Item.Properties()
+                    .tab(CreativeModeTab.TAB_COMBAT)));
+    public static final RegistryObject<ResourceSlimesIntegratedClawsItem> EMERALD_CLAWS = ITEMS.register("emerald_claws",
+            () -> new ResourceSlimesIntegratedClawsItem(IntegratedMaterials.EMERALD, 3, 4, new Item.Properties()
+                    .tab(CreativeModeTab.TAB_COMBAT)));
+    public static final RegistryObject<ResourceSlimesIntegratedClawsItem> TANZANITE_CLAWS = ITEMS.register("tanzanite_claws",
+            () -> new ResourceSlimesIntegratedClawsItem(IntegratedMaterials.TANZANITE, 3, 4, new Item.Properties()
+                    .tab(CreativeModeTab.TAB_COMBAT)));
+    public static final RegistryObject<ResourceSlimesIntegratedClawsItem> ZIRCON_CLAWS = ITEMS.register("zircon_claws",
+            () -> new ResourceSlimesIntegratedClawsItem(IntegratedMaterials.ZIRCON, 3, 4, new Item.Properties()
+                    .tab(CreativeModeTab.TAB_COMBAT)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

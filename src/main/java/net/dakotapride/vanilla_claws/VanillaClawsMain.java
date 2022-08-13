@@ -21,6 +21,8 @@ public class VanillaClawsMain
         ItemsInit.register(eventBus);
         if (ModList.get().isLoaded("gobber2")) {
             IntegratedMaterials.init(eventBus);
+        } else if (ModList.get().isLoaded("resourceslimes")) {
+            IntegratedMaterials.init(eventBus);
         }
 
         // Register ourselves for server and other game events we are interested in

@@ -11,5 +11,12 @@
   "item.vanilla_claws.gobber2_nether_claws": "Когти пожирателя Пустоты",
   "item.vanilla_claws.gobber2_end_claws": "Конец когтей плевака",
 
+  "item.vanilla_claws.black_opal_claws": "Чёрные опаловые когти",
+  "item.vanilla_claws.citrine_claws": "Цитриновые когти",
+  "item.vanilla_claws.emerald_claws": "Изумрудные когти",
+  "item.vanilla_claws.tanzanite_claws": "Танзанитовые когти",
+  "item.vanilla_claws.zircon_claws": "Цирконовые когти",
+  "item.vanilla_claws.soapy_claws": "Мыльные когти",
+
   "tooltip.vanilla_claws.requires_mod": "Этому предмету требуется мод %."
 }

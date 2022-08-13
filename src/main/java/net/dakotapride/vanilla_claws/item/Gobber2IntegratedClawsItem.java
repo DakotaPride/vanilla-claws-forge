@@ -15,11 +15,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class IntegratedClawsItem extends ClawsItem {
+public class Gobber2IntegratedClawsItem extends ClawsItem {
     public String requiredMod;
     public boolean isRequiredModInstalled;
 
-    public IntegratedClawsItem(Tier pTier, int damage, float attackSpeed, Properties pProperties) {
+    public Gobber2IntegratedClawsItem(Tier pTier, int damage, float attackSpeed, Properties pProperties) {
         super(pTier, damage, attackSpeed, pProperties);
         this.requiredMod = "gobber2";
         this.isRequiredModInstalled = ModList.get().isLoaded("gobber2");

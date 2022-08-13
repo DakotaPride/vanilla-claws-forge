@@ -1,0 +1,6 @@
+{
+  "parent": "vanilla_claws:item/claws_model",
+  "textures": {
+    "layer0": "vanilla_claws:item/cut_tanzanite_claws"
+  }
+}
