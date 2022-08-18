@@ -41,12 +41,4 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    @Inject(method = "getBlockSpeedFactor", at = @At("HEAD"), cancellable = true)
-    private void onGetBlockSpeedFactor(CallbackInfoReturnable<Float> cir) {
-        if (((Object)this) instanceof LivingEntity living
-                && living.getItemInHand(InteractionHand.MAIN_HAND).is(ItemsInit.SOAPY_CLAWS.get())) {
-            cir.setReturnValue(1.01F);
-        }
-    }
-
 }
