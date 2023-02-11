@@ -20,7 +20,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.spongepowered.mixin'
 
 
-version = '1.0.1-dev'
+version = '1.0.1-devH'
 group = 'net.dakotapride.vanilla_claws' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'vanilla_claws'
 
