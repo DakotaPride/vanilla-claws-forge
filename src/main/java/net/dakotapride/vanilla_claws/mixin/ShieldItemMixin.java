@@ -22,24 +22,16 @@ public abstract class ShieldItemMixin {
     private void use(Level pLevel, Player pPlayer, InteractionHand pHand, CallbackInfoReturnable<InteractionResultHolder<ItemStack>> cir) {
         if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof ClawsItem) {
             cir.setReturnValue(InteractionResultHolder.fail(pPlayer.getItemInHand(pHand)));
-        } else if (pPlayer.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof ClawsItem) {
-            cir.setReturnValue(InteractionResultHolder.fail(pPlayer.getItemInHand(pHand)));
         }
 
         if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof GobberClawsItem) {
             cir.setReturnValue(InteractionResultHolder.fail(pPlayer.getItemInHand(pHand)));
-        } else if (pPlayer.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof GobberClawsItem) {
-            cir.setReturnValue(InteractionResultHolder.fail(pPlayer.getItemInHand(pHand)));
         }
         if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof EndGobberClawsItem) {
-            cir.setReturnValue(InteractionResultHolder.fail(pPlayer.getItemInHand(pHand)));
-        } else if (pPlayer.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof EndGobberClawsItem) {
             cir.setReturnValue(InteractionResultHolder.fail(pPlayer.getItemInHand(pHand)));
         }
 
         if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof ResourceSlimesIntegratedClawsItem) {
-            cir.setReturnValue(InteractionResultHolder.fail(pPlayer.getItemInHand(pHand)));
-        } else if (pPlayer.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof ResourceSlimesIntegratedClawsItem) {
             cir.setReturnValue(InteractionResultHolder.fail(pPlayer.getItemInHand(pHand)));
         }
     }

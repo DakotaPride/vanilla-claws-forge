@@ -17,11 +17,11 @@ public class TagsInit {
     public static final TagKey<Item> GOBBER2_NETHER_INGOTS = of("gobber2_nether_ingots");
 
     public static final TagKey<Item> SOAPY_INGOTS = of("soapy_ingots");
-    public static final TagKey<Item> BLACK_OPAL = of("soapy_ingots");
-    public static final TagKey<Item> ZIRCON = of("soapy_ingots");
-    public static final TagKey<Item> TANZANITE = of("soapy_ingots");
-    public static final TagKey<Item> EMERALD = of("soapy_ingots");
-    public static final TagKey<Item> CITRINE = of("soapy_ingots");
+    public static final TagKey<Item> BLACK_OPAL = of("black_opal");
+    public static final TagKey<Item> ZIRCON = of("zircon");
+    public static final TagKey<Item> TANZANITE = of("tanzanite");
+    public static final TagKey<Item> EMERALD = of("emerald");
+    public static final TagKey<Item> CITRINE = of("citrine");
 
     private static TagKey<Item> forgeTag(String name) {
         return ItemTags.create(new ResourceLocation("forge", name));

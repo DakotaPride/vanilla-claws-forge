@@ -1,20 +1,44 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "iii",
-    "LLL",
-    " L "
-  ],
-  "key": {
-    "i": {
-      "item": "resourceslimes:cut_zircon"
-    },
-    "L": {
-      "item": "minecraft:leather"
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:and",
+          "values": [
+            {
+              "type": "forge:not",
+              "value": {
+                "type": "forge:mod_loaded",
+                "modid": "resourceslimes"
+              }
+            },
+            {
+              "type": "forge:false"
+            }
+          ]
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "iii",
+          "LLL",
+          " L "
+        ],
+        "key": {
+          "i": {
+            "item": "resourceslimes:cut_zircon"
+          },
+          "L": {
+            "item": "minecraft:leather"
+          }
+        },
+        "result": {
+          "item": "vanilla_claws:zircon_claws",
+          "count": 1
+        }
+      }
     }
-  },
-  "result": {
-    "item": "vanilla_claws:zircon_claws",
-    "count": 1
-  }
+  ]
 }

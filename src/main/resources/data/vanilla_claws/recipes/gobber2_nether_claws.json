@@ -1,20 +1,44 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "iii",
-    "LLL",
-    " L "
-  ],
-  "key": {
-    "i": {
-      "item": "gobber2:gobber2_ingot_nether"
-    },
-    "L": {
-      "item": "minecraft:leather"
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:and",
+          "values": [
+            {
+              "type": "forge:not",
+              "value": {
+                "type": "forge:mod_loaded",
+                "modid": "gobber2"
+              }
+            },
+            {
+              "type": "forge:false"
+            }
+          ]
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "iii",
+          "LLL",
+          " L "
+        ],
+        "key": {
+          "i": {
+            "item": "gobber2:gobber2_ingot_nether"
+          },
+          "L": {
+            "item": "minecraft:leather"
+          }
+        },
+        "result": {
+          "item": "vanilla_claws:gobber2_nether_claws",
+          "count": 1
+        }
+      }
     }
-  },
-  "result": {
-    "item": "vanilla_claws:gobber2_nether_claws",
-    "count": 1
-  }
+  ]
 }
