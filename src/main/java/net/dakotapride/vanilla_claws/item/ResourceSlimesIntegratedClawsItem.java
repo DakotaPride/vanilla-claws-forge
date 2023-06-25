@@ -5,6 +5,7 @@ import net.minecraft.locale.Language;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
@@ -31,7 +32,7 @@ public class ResourceSlimesIntegratedClawsItem extends ClawsItem {
         if(!isRequiredModInstalled) {
             String text = Language.getInstance().getOrDefault("tooltip.vanilla_claws.requires_mod");
             text = text.replaceAll("%", requiredMod.substring(0, 1).toUpperCase() + requiredMod.substring(1));
-            pListComponent.add(Component.literal(text).copy().setStyle(Style.EMPTY.withColor(TextColor.fromLegacyFormat(ChatFormatting.GRAY))));
+            pListComponent.add(new TextComponent(text).copy().setStyle(Style.EMPTY.withColor(TextColor.fromLegacyFormat(ChatFormatting.GRAY))));
         }
     }
 
