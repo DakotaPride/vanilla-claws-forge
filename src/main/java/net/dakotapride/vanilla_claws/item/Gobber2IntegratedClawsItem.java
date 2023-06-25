@@ -32,7 +32,7 @@ public class Gobber2IntegratedClawsItem extends ClawsItem {
         if(!isRequiredModInstalled) {
             String text = Language.getInstance().getOrDefault("tooltip.vanilla_claws.requires_mod");
             text = text.replaceAll("%", requiredMod.substring(0, 1).toUpperCase() + requiredMod.substring(1));
-            pListComponent.add(new TextComponent(text).copy().setStyle(Style.EMPTY.withColor(TextColor.fromLegacyFormat(ChatFormatting.GRAY))));
+            pListComponent.add(Component.literal(text).copy().setStyle(Style.EMPTY.withColor(TextColor.fromLegacyFormat(ChatFormatting.GRAY))));
         }
     }
 
