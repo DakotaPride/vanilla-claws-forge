@@ -1,6 +1,18 @@
 {
-  "parent": "vanilla_claws:item/claws_model",
-  "textures": {
-    "layer0": "vanilla_claws:item/iron_claws"
+  "parent": "minecraft:item/handheld",
+  "loader": "forge:separate_transforms",
+  "base": {
+    "parent": "vanilla_claws:item/hand/iron_claws"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "vanilla_claws:item/inventory/iron_claws"
+    },
+    "ground": {
+      "parent": "vanilla_claws:item/inventory/iron_claws"
+    },
+    "fixed": {
+      "parent": "vanilla_claws:item/inventory/iron_claws"
+    }
   }
 }

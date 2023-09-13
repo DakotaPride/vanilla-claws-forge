@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "vanilla_claws:item/inventory/gobber2_nether_claws"
+  }
+}

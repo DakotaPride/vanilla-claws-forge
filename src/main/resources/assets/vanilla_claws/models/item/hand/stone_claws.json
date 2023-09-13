@@ -1,0 +1,6 @@
+{
+  "parent": "vanilla_claws:item/claws_hand",
+  "textures": {
+    "layer0": "vanilla_claws:item/stone_claws"
+  }
+}

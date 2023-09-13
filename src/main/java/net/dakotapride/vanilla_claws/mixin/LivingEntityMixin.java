@@ -13,13 +13,17 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
-    Entity entity = this;
+    @Unique
+    Entity claws$entity = this;
+
+    @Unique
     private static final RegistryObject<MobEffect> SOAPY_EFFECT =
             RegistryObject.create(new ResourceLocation("resourceslimes:soapy"), ForgeRegistries.MOB_EFFECTS);
     public LivingEntityMixin(EntityType<?> entityType, Level level) {
@@ -28,9 +32,9 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void tick(CallbackInfo ci) {
-        if (entity instanceof LivingEntity living && living.getItemInHand(InteractionHand.MAIN_HAND).is(ItemsInit.SOAPY_CLAWS.get())
+        if (claws$entity instanceof LivingEntity living && living.getItemInHand(InteractionHand.MAIN_HAND).is(ItemsInit.SOAPY_CLAWS.get())
         && ModList.get().isLoaded("resourceslimes")) {
-            ((LivingEntity) entity).addEffect(new MobEffectInstance(SOAPY_EFFECT.get()));
+            ((LivingEntity) claws$entity).addEffect(new MobEffectInstance(SOAPY_EFFECT.get(), 40));
         }
     }
 

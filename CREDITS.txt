@@ -4,4 +4,5 @@ PinkGoosik
 Theone_ss
 
 https://www.curseforge.com/minecraft/mc-mods/banilla-claws
+https://www.modrinth.com/mod/banilla-claws
 https://github.com/Theoness1/vanilla-claws

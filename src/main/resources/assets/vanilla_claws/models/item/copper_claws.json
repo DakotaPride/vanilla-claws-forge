@@ -1,6 +1,18 @@
 {
-  "parent": "vanilla_claws:item/claws_model",
-  "textures": {
-    "layer0": "vanilla_claws:item/copper_claws"
+  "parent": "minecraft:item/handheld",
+  "loader": "forge:separate_transforms",
+  "base": {
+    "parent": "vanilla_claws:item/hand/copper_claws"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "vanilla_claws:item/inventory/copper_claws"
+    },
+    "ground": {
+      "parent": "vanilla_claws:item/inventory/copper_claws"
+    },
+    "fixed": {
+      "parent": "vanilla_claws:item/inventory/copper_claws"
+    }
   }
 }
