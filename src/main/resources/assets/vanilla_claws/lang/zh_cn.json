@@ -1,0 +1,24 @@
+{
+  "item.vanilla_claws.netherite_claws": "下界合金爪",
+  "item.vanilla_claws.diamond_claws": "钻石爪",
+  "item.vanilla_claws.iron_claws": "铁爪",
+  "item.vanilla_claws.gold_claws": "金爪",
+  "item.vanilla_claws.copper_claws": "铜爪",
+  "item.vanilla_claws.stone_claws": "石爪",
+  "item.vanilla_claws.wooden_claws": "木爪",
+
+  // "item.vanilla_claws.cryomarble_claws": "冰晶石爪",
+
+  "tooltip.vanilla_claws.requires_mod": "此项需要安装mod %。",
+
+  // Currently Untranslated
+  "item.vanilla_claws.gobber2_claws": "Gobber Claws",
+  "item.vanilla_claws.gobber2_nether_claws": "Nether Gobber Claws",
+  "item.vanilla_claws.gobber2_end_claws": "End Gobber Claws",
+  "item.vanilla_claws.black_opal_claws": "Black Opal Claws",
+  "item.vanilla_claws.citrine_claws": "Citrine Claws",
+  "item.vanilla_claws.emerald_claws": "Emerald Claws",
+  "item.vanilla_claws.tanzanite_claws": "Tanzanite Claws",
+  "item.vanilla_claws.zircon_claws": "Zircon Claws",
+  "item.vanilla_claws.soapy_claws": "Soapy Claws"
+}

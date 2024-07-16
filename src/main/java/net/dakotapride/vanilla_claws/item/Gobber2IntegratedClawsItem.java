@@ -8,10 +8,7 @@ import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.fml.ModList;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import net.neoforged.fml.ModList;
 
 import java.util.List;
 
@@ -26,7 +23,7 @@ public class Gobber2IntegratedClawsItem extends ClawsItem {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pListComponent, @NotNull TooltipFlag pTooltipFlag) {
+    public void appendHoverText(ItemStack pStack, TooltipContext pLevel, List<Component> pListComponent, TooltipFlag pTooltipFlag) {
         super.appendHoverText(pStack, pLevel, pListComponent, pTooltipFlag);
         if(!isRequiredModInstalled) {
             String text = Language.getInstance().getOrDefault("tooltip.vanilla_claws.requires_mod");

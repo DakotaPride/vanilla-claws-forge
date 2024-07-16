@@ -1,75 +1,73 @@
 package net.dakotapride.vanilla_claws.item.material;
 
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
 @SuppressWarnings("deprecation")
 public enum VanillaClawsMaterials implements Tier {
-    WOOD(0, 79, 2.0F, 0.0F, 1, () -> {
+    WOOD(79, 10, () -> {
         return Ingredient.of(ItemTags.PLANKS);
     }),
-    STONE(0, 161, 4.0F, 0.0F, 1, () -> {
+    STONE(161, 11, () -> {
         return Ingredient.of(ItemTags.STONE_TOOL_MATERIALS);
     }),
-    COPPER(0, 231, 2.0F, 0.0F, 1, () -> {
+    COPPER(231, 11, () -> {
         return Ingredient.of(Items.COPPER_INGOT);
     }),
-    IRON(0, 320, 6.0F, 0.0F, 1, () -> {
+    IRON(320, 15, () -> {
         return Ingredient.of(Items.IRON_INGOT);
     }),
-    DIAMOND(0, 761, 8.0F, 2.0F, 1, () -> {
+    DIAMOND(761, 18, () -> {
         return Ingredient.of(Items.DIAMOND);
     }),
-    GOLD(0, 72, 12.0F, 0.0F, 26, () -> {
+    GOLD(72, 26, () -> {
         return Ingredient.of(Items.GOLD_INGOT);
     }),
-    NETHERITE(0, 1131, 9.0F, 2.0F, 1, () -> {
+    NETHERITE(1131, 24, () -> {
         return Ingredient.of(Items.NETHERITE_INGOT);
     });
 
-    private final int level;
     private final int uses;
-    private final float speed;
-    private final float damage;
     private final int enchantmentValue;
     private final LazyLoadedValue<Ingredient> repairIngredient;
 
-    VanillaClawsMaterials(int pLevel, int pUses, float pSpeed, float pDamage, int pEnchantmentValue, Supplier<Ingredient> pRepairIngredient) {
-        this.level = pLevel;
+    VanillaClawsMaterials(int pUses, int pEnchantmentValue, Supplier<Ingredient> pRepairIngredient) {
         this.uses = pUses;
-        this.speed = pSpeed;
-        this.damage = pDamage;
         this.enchantmentValue = pEnchantmentValue;
         this.repairIngredient = new LazyLoadedValue<>(pRepairIngredient);
     }
+
 
     public int getUses() {
         return this.uses;
     }
 
     public float getSpeed() {
-        return this.speed;
+        return 0;
     }
 
     public float getAttackDamageBonus() {
-        return this.damage;
+        return 0;
     }
 
-    public int getLevel() {
-        return this.level;
+    public TagKey<Block> getIncorrectBlocksForDrops() {
+        return null;
     }
 
     public int getEnchantmentValue() {
         return this.enchantmentValue;
     }
 
-    public @NotNull Ingredient getRepairIngredient() {
+    public Ingredient getRepairIngredient() {
         return this.repairIngredient.get();
     }
 }

@@ -24,11 +24,11 @@ public class TagsInit {
     public static final TagKey<Item> CITRINE = of("citrine");
 
     private static TagKey<Item> forgeTag(String name) {
-        return ItemTags.create(new ResourceLocation("forge", name));
+        return ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", name));
     }
 
     private static TagKey<Item> of(String name) {
-        return ItemTags.create(new ResourceLocation(VanillaClawsMain.MOD_ID, name));
+        return ItemTags.create(ResourceLocation.fromNamespaceAndPath(VanillaClawsMain.MOD_ID, name));
     }
 
 }
