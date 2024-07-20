@@ -8,9 +8,9 @@ import net.minecraft.world.item.Item;
 
 public class TagsInit {
 
-    public static final TagKey<Item> CAN_DISABLE_SHIELDS = forgeTag("shield/can_disable_shields");
-    public static final TagKey<Item> CLAWS = forgeTag("weapons/claws");
-    public static final TagKey<Item> AXES = forgeTag("weapons/axes");
+    public static final TagKey<Item> CAN_DISABLE_SHIELDS = commonTag("shield/can_disable_shields");
+    public static final TagKey<Item> CLAWS = commonTag("weapons/claws");
+    public static final TagKey<Item> AXES = commonTag("weapons/axes");
 
     public static final TagKey<Item> GOBBER2_INGOTS = of("gobber2_ingots");
     public static final TagKey<Item> GOBBER2_END_INGOTS = of("gobber2_end_ingots");
@@ -23,8 +23,8 @@ public class TagsInit {
     public static final TagKey<Item> EMERALD = of("emerald");
     public static final TagKey<Item> CITRINE = of("citrine");
 
-    private static TagKey<Item> forgeTag(String name) {
-        return ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", name));
+    private static TagKey<Item> commonTag(String name) {
+        return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", name));
     }
 
     private static TagKey<Item> of(String name) {
